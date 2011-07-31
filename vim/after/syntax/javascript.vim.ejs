@@ -1,0 +1,20 @@
+" Vim syntax file
+" Language:     JavaScript - YUI 3
+" Version:      <%= version %>
+" Maintainer:   Ryan Grove <ryan@wonko.com>
+" Last Change:  <%= Date() %>
+
+" This syntax file is meant to augment Yi Zhao's javascript.vim syntax. Install
+" this file in your ~/.vim/after/syntax/ directory so it will run after the
+" original javascript.vim.
+"
+" This is a bit hacky right now, but it works. Someone who knows more about vim
+" syntax files than I do should make this better.
+
+syntax keyword javaScriptGlobalObjects  Y YUI <%=: classes | join:' ' %>
+syntax keyword javaScriptFunction       <%=: functions | join:' ' %>
+syntax keyword javaScriptYUI3Constant   <%=: constants | join:' '%>
+syntax keyword javaScriptYUI3Property   <%=: variables | join:' '%>
+
+hi link javaScriptYUI3Constant  Constant
+hi link javaScriptYUI3Property  Identifier

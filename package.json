@@ -1,0 +1,10 @@
+{
+    "name": "yui-editor-extras",
+    "description": "Editor syntax files, snippets, etc. for YUI 3.",
+    "version": "0.0.1",
+    "author": "Ryan Grove <ryan@wonko.com>",
+
+    "dependencies": {
+        "ejs": "~0.4.3"
+    }
+}

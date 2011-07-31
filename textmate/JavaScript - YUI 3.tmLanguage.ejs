@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>name</key>
+    <string>JavaScript - YUI 3</string>
+    <key>comment</key>
+    <string>Syntax file for YUI <%= version %></string>
+    <key>scopeName</key>
+    <string>source.js.yui3</string>
+    <key>fileTypes</key>
+    <array>
+        <string>js</string>
+    </array>
+
+    <key>foldingStartMarker</key>
+    <string>(^.*{[^}]*$|^.*\([^\)]*$|^.*/\*(?!.*\*/).*$)</string>
+    <key>foldingStopMarker</key>
+    <string>(^\s*\}|^\s*\)|^(?!.*/\*).*\*/)</string>
+    <key>keyEquivalent</key>
+    <string>^~J</string>
+
+    <key>patterns</key>
+    <array>
+        <dict>
+            <key>match</key>
+            <string>\b(Y|YUI)\b</string>
+            <key>name</key>
+            <string>support.class.js.yui3</string>
+        </dict>
+        <dict>
+            <key>match</key>
+            <string>(?&lt;=\.)(<%= classes_joined %>)\b</string>
+            <key>name</key>
+            <string>support.class.js.yui3</string>
+        </dict>
+        <dict>
+            <key>match</key>
+            <string>\b(<%= functions_joined %>)\b(?=\()</string>
+            <key>name</key>
+            <string>support.function.js.yui3</string>
+        </dict>
+        <dict>
+            <key>match</key>
+            <string>(?&lt;=\.)(<%= constants_joined %>)\b</string>
+            <key>name</key>
+            <string>support.constant.js.yui3</string>
+        </dict>
+        <dict>
+            <key>match</key>
+            <string>(?&lt;=\.)(<%= variables_joined %>)\b</string>
+            <key>name</key>
+            <string>support.variable.js.yui3</string>
+        </dict>
+        <dict>
+            <key>include</key>
+            <string>source.js</string>
+        </dict>
+    </array>
+
+    <key>uuid</key>
+    <string>00162ece-eb93-4c83-a2a2-028abe00f905</string>
+</dict>
+</plist>
