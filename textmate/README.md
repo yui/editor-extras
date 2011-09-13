@@ -22,3 +22,12 @@ Installation
 
 Double-click on a `.tmLanguage` file to install it in TextMate. For other
 editors that support TextMate bundles, you're on your own.
+
+
+Contributing
+------------
+
+The YUI 3 syntax is generated automatically by the `build.js` script from the
+latest syntax data retrieved from the YUI website API. To modify the syntax,
+edit the `JavaScript - YUI 3.tmLanguage.ejs` template; don't edit the generated
+syntax file itself.
