@@ -1,4 +1,11 @@
 #!/usr/bin/env node
+
+/*
+Copyright 2011 Yahoo! Inc. All rights reserved.
+Licensed under the BSD License.
+http://yuilibrary.com/license/
+*/
+
 var ejs   = require('ejs'),
     fs    = require('fs'),
     http  = require('http'),
