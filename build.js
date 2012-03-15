@@ -36,7 +36,9 @@ var ejs   = require('ejs'),
     // YUI website API details.
     YUI_API_HOST = 'stage.yuilibrary.com',
     YUI_API_PORT = 80,
-    YUI_API_ROOT = '/api/v1';
+    YUI_API_ROOT = '/api/v1',
+
+    getPath;
 
 // First, make sure we have a version number.
 if (!yuiVersion) {
@@ -47,19 +49,22 @@ if (!yuiVersion) {
     process.exit(1);
 }
 
+getPath = YUI_API_ROOT + '/classes/?sort=sortName&version=' +
+        encodeURIComponent(yuiVersion);
+
 // Hit the YUI website API to get the latest syntax data.
 console.log('Fetching latest syntax data from the YUI website API');
+console.log('http://' + YUI_API_HOST + getPath);
 
 http.get({
     host: YUI_API_HOST,
     port: YUI_API_PORT,
-    path: YUI_API_ROOT + '/classes/?sort=sortName&version=' +
-            encodeURIComponent(yuiVersion)
+    path: getPath
 }, function (res) {
     var data = '';
 
     if (res.statusCode < 200 || res.statusCode > 299) {
-        onFetchError(Error('HTTP ' + res.statusCode));
+        onFetchError(new Error('HTTP ' + res.statusCode));
         return;
     }
 
@@ -69,6 +74,10 @@ http.get({
     res.on('end', function () {
         try {
             data = JSON.parse(data);
+            if (!data.classes.length) {
+                onFetchError(new Error('No classes returned for version ' + yuiVersion));
+                return;
+            }
         } catch (ex) {
             onFetchError(ex);
             return;
