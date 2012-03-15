@@ -107,7 +107,25 @@ function onFetchSuccess(data) {
 
         if (klass.methods) {
             util.each(klass.methods, function (method, name) {
-                var match = name.match(/\.([^\.]+)$/);
+                var match, descr;
+
+                // catch a doc bug where description gets inserted in method name
+                if (name && name.indexOf('\n') > -1) {
+                    descr = name.split('\n');
+                    // clean method name
+                    name = descr.shift().trim();
+                    // append to existing description, if present
+                    if (method.description) {
+                        descr.unshift(method.description);
+                    }
+                    // augment methods object with clean copy of method config
+                    klass.methods[name] = util.merge(method, {
+                        description: descr.join('\n'),
+                        name: name
+                    });
+                }
+
+                match = name.match(/\.([^\.]+)$/);
 
                 name = match ? match[1].trim() : name.trim();
 
